@@ -15,7 +15,8 @@ export const addProduct = async (req,res) => {
 
 export const getProduct = async (req,res) => {
     try {
-        const page = req.query.page || 1;
+        // const page = req.query.page || 1;
+        const { page } = req.body;
         const eachSkip = (page-1) * 5; 
         const product = await products.find({}).skip(eachSkip).limit(5).exec();
         if(product){
